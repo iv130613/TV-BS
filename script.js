@@ -56,7 +56,6 @@ async function startBroadcast() {
         const screenFrame = document.querySelector('.screen-frame');
         const iframe = document.getElementById('tvScreen');
 
-        // Stop the YouTube video audio by clearing the source
         iframe.src = "";
         iframe.style.display = 'none';
 
@@ -69,15 +68,15 @@ async function startBroadcast() {
             video.style.width = '100%';
             video.style.height = '100%';
             video.style.objectFit = 'cover';
-            video.style.position = 'absolute'; // Ensure it sits on top if needed
+            video.style.position = 'absolute';
             video.style.top = '0';
             video.style.left = '0';
-            video.style.zIndex = '10'; // Ensure it is above the iframe
+            video.style.zIndex = '10';
             screenFrame.appendChild(video);
         }
 
         video.srcObject = stream;
-        video.muted = true; // Mute local playback to avoid feedback loop
+        video.muted = true;
         video.volume = 0;
 
         try {
@@ -110,7 +109,6 @@ function stopBroadcast(restoreChannel = true) {
     const iframe = document.getElementById('tvScreen');
     iframe.style.display = 'block';
 
-    // Restore a default channel or the last channel
     if (restoreChannel) {
         changeChannel('Noticias', 'vMiOICestsI');
     }
