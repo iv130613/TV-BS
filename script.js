@@ -2,7 +2,7 @@ let mediaStream = null;
 
 function changeChannel(channelName, videoId) {
     if (mediaStream) {
-        stopBroadcast();
+        stopBroadcast(false);
     }
 
     const iframe = document.getElementById('tvScreen');
@@ -56,6 +56,8 @@ async function startBroadcast() {
         const screenFrame = document.querySelector('.screen-frame');
         const iframe = document.getElementById('tvScreen');
 
+        // Stop the YouTube video audio by clearing the source
+        iframe.src = "";
         iframe.style.display = 'none';
 
         let video = document.getElementById('liveVideo');
@@ -67,13 +69,16 @@ async function startBroadcast() {
             video.style.width = '100%';
             video.style.height = '100%';
             video.style.objectFit = 'cover';
+            video.style.position = 'absolute'; // Ensure it sits on top if needed
+            video.style.top = '0';
+            video.style.left = '0';
+            video.style.zIndex = '10'; // Ensure it is above the iframe
             screenFrame.appendChild(video);
         }
 
         video.srcObject = stream;
-
-        video.muted = false;
-        video.volume = 1.0;
+        video.muted = true; // Mute local playback to avoid feedback loop
+        video.volume = 0;
 
         try {
             await video.play();
@@ -91,13 +96,11 @@ async function startBroadcast() {
     }
 }
 
-function stopBroadcast() {
+function stopBroadcast(restoreChannel = true) {
     if (mediaStream) {
         mediaStream.getTracks().forEach(track => track.stop());
         mediaStream = null;
     }
-
-
 
     const video = document.getElementById('liveVideo');
     if (video) {
@@ -106,7 +109,11 @@ function stopBroadcast() {
 
     const iframe = document.getElementById('tvScreen');
     iframe.style.display = 'block';
-    changeChannel('Noticias', 'vMiOICestsI');
+
+    // Restore a default channel or the last channel
+    if (restoreChannel) {
+        changeChannel('Noticias', 'vMiOICestsI');
+    }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
