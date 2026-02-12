@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TV BS - Transmisión en Vivo</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://unpkg.com/peerjs@1.4.7/dist/peerjs.min.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <h1>TV BS</h1>
+        </div>
+        <div class="status glass-container" style="padding: 0.5rem 1rem;">
+            <div id="status-dot" class="status-dot offline"></div>
+            <span id="status-text">Desconectado</span>
+            <span style="margin: 0 0.5rem;">|</span>
+            👥 <span id="viewer-count">0</span>
+        </div>
+    </header>
+
+    <main class="main-grid">
+        <aside class="channels-sidebar glass-container">
+            <div class="channel-title">Canales en Vivo</div>
+
+            <div class="channel-item" onclick="changeChannel('sala-principal')">
+                <span class="channel-icon">📺</span>
+                <div class="channel-info">
+                    <span class="channel-name">Noticias</span>
+                    <span class="channel-status">Principal</span>
+                </div>
+            </div>
+
+            <div class="channel-item" onclick="changeChannel('sala-deportes')">
+                <span class="channel-icon">⚽</span>
+                <div class="channel-info">
+                    <span class="channel-name">Deportes</span>
+                    <span class="channel-status">Eventos</span>
+                </div>
+            </div>
+
+            <div class="channel-item" onclick="changeChannel('sala-cine')">
+                <span class="channel-icon">🎬</span>
+                <div class="channel-info">
+                    <span class="channel-name">Cine</span>
+                    <span class="channel-status">Películas</span>
+                </div>
+            </div>
+
+            <div class="channel-item" onclick="changeChannel('sala-musica')">
+                <span class="channel-icon">🎵</span>
+                <div class="channel-info">
+                    <span class="channel-name">Música</span>
+                    <span class="channel-status">24/7 Hits</span>
+                </div>
+            </div>
+
+            <div style="margin-top: auto; padding: 1rem; background: rgba(0,0,0,0.2); border-radius: 8px;">
+                <p style="font-size: 0.8rem; color: #aaa;">Más canales pronto...</p>
+            </div>
+        </aside>
+
+        <section class="video-section">
+            <div class="video-wrapper glass-container" style="padding: 0;">
+                <div id="offline-placeholder" class="offline-placeholder">
+                    <h2>🔴 Esperando transmisión...</h2>
+                    <p>El administrador iniciará el stream pronto.</p>
+                </div>
+                <video id="remote-video" autoplay playsinline></video>
+            </div>
+
+            <div class="stream-info glass-container" style="margin-top: 1rem;">
+                <h2>Canal Principal</h2>
+                <p>Disfruta de la transmisión en alta calidad con baja latencia.</p>
+            </div>
+        </section>
+
+        <aside class="sidebar">
+            <div class="chat-box glass-container">
+                <h3>💬 Chat en Vivo</h3>
+                <div id="messages" class="messages">
+                    <!-- Mensajes aquí -->
+                </div>
+                <form id="chat-form" class="chat-input-area">
+                    <input type="text" id="chat-input" placeholder="Escribe un mensaje..." autocomplete="off">
+                    <button type="submit">Enviar</button>
+                </form>
+            </div>
+        </aside>
+    </main>
+
+    <script src="client.js"></script>
+</body>
+
+</html>
