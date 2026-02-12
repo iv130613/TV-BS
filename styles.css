@@ -2,7 +2,6 @@
     --bg-dark: #0f0f13;
     --bg-panel: #1a1a24;
     --accent: #e50914;
-    /* Netflix-like red for TV feel */
     --text-primary: #ffffff;
     --text-secondary: #a0a0b0;
     --glow: rgba(229, 9, 20, 0.4);
@@ -34,7 +33,6 @@ body {
     gap: 20px;
 }
 
-/* Header */
 .tv-header {
     display: flex;
     justify-content: space-between;
@@ -67,7 +65,6 @@ body {
     color: var(--text-secondary);
 }
 
-/* Screen Area */
 .screen-container {
     width: 100%;
     background: #000;
@@ -80,7 +77,6 @@ body {
 .screen-frame {
     position: relative;
     padding-bottom: 56.25%;
-    /* 16:9 Aspect Ratio */
     height: 0;
     overflow: hidden;
 }
@@ -96,7 +92,6 @@ body {
     background: #000;
 }
 
-/* Admin UI */
 .admin-float-btn {
     position: fixed;
     bottom: 20px;
@@ -192,7 +187,6 @@ body {
     display: none;
 }
 
-/* Full Screen Broadcast Mode */
 body.broadcasting {
     overflow: hidden;
 }
@@ -227,11 +221,9 @@ body.broadcasting #liveVideo {
     object-fit: cover;
 }
 
-/* Ensure Stop Button is visible in FS mode */
 body.broadcasting .admin-float-btn {
     z-index: 60;
     background: rgba(220, 53, 69, 0.8);
-    /* Red background to indicate stop */
     bottom: 30px;
     right: 30px;
     width: 60px;
@@ -257,7 +249,6 @@ body.broadcasting .admin-float-btn {
     }
 }
 
-/* Channel Navigation */
 .channel-nav {
     margin-top: 20px;
 }
@@ -324,7 +315,6 @@ body.broadcasting .admin-float-btn {
     color: rgba(255, 255, 255, 0.9);
 }
 
-/* Animations */
 @keyframes pulse {
     0% {
         opacity: 1;
@@ -339,7 +329,6 @@ body.broadcasting .admin-float-btn {
     }
 }
 
-/* Responsive */
 @media (max-width: 768px) {
     .container {
         padding: 15px;
@@ -351,11 +340,9 @@ body.broadcasting .admin-float-btn {
 
     .current-channel {
         display: none;
-        /* Hide on small screens to save space */
     }
 
     .channel-grid {
         grid-template-columns: 1fr;
-        /* Stack channels on mobile */
     }
 }
