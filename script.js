@@ -95,7 +95,7 @@ async function startBroadcast() {
     }
 }
 
-function stopBroadcast(restoreChannel = true) {
+function stopBroadcast(restoreChannel = false) {
     if (mediaStream) {
         mediaStream.getTracks().forEach(track => track.stop());
         mediaStream = null;
@@ -111,6 +111,10 @@ function stopBroadcast(restoreChannel = true) {
 
     if (restoreChannel) {
         changeChannel('Noticias', 'vMiOICestsI');
+    } else {
+        // Standby Mode
+        iframe.src = "";
+        document.getElementById('currentChannelName').textContent = '⚠️ EN ESPERA DE SEÑAL';
     }
 }
 

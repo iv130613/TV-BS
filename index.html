@@ -77,8 +77,19 @@
             <div id="adminControls" class="hidden">
                 <p>Bienvenido, Admin.</p>
                 <div class="control-group">
-                    <button class="live-btn" onclick="startBroadcast()"> Iniciar Transmisión</button>
-                    <button class="stop-btn" onclick="stopBroadcast()"> Detener Transmisión</button>
+                    <button class="live-btn" onclick="startBroadcast()">📡 Iniciar Transmisión</button>
+                    <button class="stop-btn" onclick="stopBroadcast(false)">🛑 Detener Transmisión</button>
+                </div>
+
+                <hr style="margin: 15px 0; border: 0; border-top: 1px solid rgba(255,255,255,0.1);">
+
+                <h3>Control de Señal Manual</h3>
+                <div class="control-group-channels">
+                    <button onclick="changeChannel('Noticias', 'vMiOICestsI')">📰 Noticias</button>
+                    <button onclick="changeChannel('Deportes', 'hHCSub0cpDs')">⚽ Deportes</button>
+                    <button onclick="changeChannel('Música', 'e__Pp4FxsjU')">🎵 Música</button>
+                    <button onclick="changeChannel('Caricaturas', 'XiV6HvfSA4A')">🧸 Caricaturas</button>
+                    <button class="standby-btn" onclick="stopBroadcast(false)">⚠️ Modo Espera</button>
                 </div>
             </div>
         </div>
