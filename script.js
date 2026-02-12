@@ -23,7 +23,7 @@ function changeChannel(channelName, videoId) {
     const buttons = document.querySelectorAll('.channel-btn');
     buttons.forEach(btn => {
         btn.classList.remove('active');
-    
+
         const nameSpan = btn.querySelector('.channel-name');
         if (nameSpan && nameSpan.textContent === channelName) {
             btn.classList.add('active');
@@ -71,7 +71,7 @@ async function startBroadcast() {
 
         document.getElementById('currentChannelName').textContent = '🔴 TRANSMISIÓN EN VIVO (Admin)';
 
-        document.body.classList.add('broadcasting');
+
 
         toggleAdminModal();
 
@@ -87,7 +87,7 @@ function stopBroadcast() {
         mediaStream = null;
     }
 
-    document.body.classList.remove('broadcasting');
+
 
     const video = document.getElementById('liveVideo');
     if (video) {
