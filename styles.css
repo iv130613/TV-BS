@@ -192,6 +192,71 @@ body {
     display: none;
 }
 
+/* Full Screen Broadcast Mode */
+body.broadcasting {
+    overflow: hidden;
+}
+
+body.broadcasting .tv-header,
+body.broadcasting .channel-nav {
+    display: none;
+}
+
+body.broadcasting .app-container {
+    padding: 0;
+    max-width: 100%;
+}
+
+body.broadcasting .screen-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0;
+    z-index: 50;
+    margin: 0;
+}
+
+body.broadcasting .screen-frame {
+    padding-bottom: 0;
+    height: 100vh;
+}
+
+body.broadcasting #liveVideo {
+    object-fit: cover;
+}
+
+/* Ensure Stop Button is visible in FS mode */
+body.broadcasting .admin-float-btn {
+    z-index: 60;
+    background: rgba(220, 53, 69, 0.8);
+    /* Red background to indicate stop */
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: pulse-red 2s infinite;
+}
+
+@keyframes pulse-red {
+    0% {
+        box-shadow: 0 0 0 0 rgba(220, 53, 69, 0.7);
+    }
+
+    70% {
+        box-shadow: 0 0 0 20px rgba(220, 53, 69, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(220, 53, 69, 0);
+    }
+}
+
 /* Channel Navigation */
 .channel-nav {
     margin-top: 20px;

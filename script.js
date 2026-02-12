@@ -80,6 +80,9 @@ async function startBroadcast() {
         // Update UI
         document.getElementById('currentChannelName').textContent = '🔴 TRANSMISIÓN EN VIVO (Admin)';
 
+        // Enter Full Screen Mode
+        document.body.classList.add('broadcasting');
+
         // Close modal
         toggleAdminModal();
 
@@ -94,6 +97,9 @@ function stopBroadcast() {
         mediaStream.getTracks().forEach(track => track.stop());
         mediaStream = null;
     }
+
+    // Exit Full Screen Mode
+    document.body.classList.remove('broadcasting');
 
     // Remove video element
     const video = document.getElementById('liveVideo');
