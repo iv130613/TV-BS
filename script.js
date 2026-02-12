@@ -56,6 +56,7 @@ async function startBroadcast() {
         const screenFrame = document.querySelector('.screen-frame');
         const iframe = document.getElementById('tvScreen');
 
+        // Hide YouTube iframe
         iframe.style.display = 'none';
 
         let video = document.getElementById('liveVideo');
@@ -64,20 +65,32 @@ async function startBroadcast() {
             video.id = 'liveVideo';
             video.autoplay = true;
             video.playsInline = true;
+            video.style.width = '100%';
+            video.style.height = '100%';
+            video.style.objectFit = 'cover';
             screenFrame.appendChild(video);
         }
 
         video.srcObject = stream;
 
+        // Ensure audio is enabled (feedback loop warning: might cause echo!)
+        video.muted = false;
+        video.volume = 1.0;
+
+        // Explicitly play to avoid autoplay policies blocking it
+        try {
+            await video.play();
+        } catch (e) {
+            console.error("Autoplay failed:", e);
+        }
+
         document.getElementById('currentChannelName').textContent = '🔴 TRANSMISIÓN EN VIVO (Admin)';
-
-
 
         toggleAdminModal();
 
     } catch (err) {
         console.error("Error accessing webcam:", err);
-        alert("No se pudo acceder a la cámara/micrófono. Asegúrate de dar permisos.");
+        alert("No se pudo acceder a la cámara/micrófono. Asegúrate de dar permisos y que no esté en uso por otra aplicación.");
     }
 }
 
