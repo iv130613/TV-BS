@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TV En Vivo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="tv-container">
+        <video id="tv-player" playsinline>
+            Tu navegador no soporta el elemento de video.
+        </video>
+        <div class="overlay" id="overlay">
+            <div class="status">EN VIVO</div>
+            <button id="tap-to-unmute">Tocar para activar sonido</button>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="viewer.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administración - TV</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="admin-body">
+    <div class="admin-panel">
+        <h1>Panel de Control de Transmisión</h1>
+
+        <div class="control-group">
+            <label for="video-source">URL del Video (MP4, WebM)</label>
+            <div class="input-group">
+                <input type="text" id="video-source" placeholder="https://ejemplo.com/video.mp4">
+                <button id="set-source">Cargar Video</button>
+            </div>
+        </div>
+
+        <div class="video-preview">
+            <h3>Vista Previa y Control</h3>
+            <video id="admin-player" controls>
+                Tu navegador no soporta el elemento de video.
+            </video>
+        </div>
+
+        <div class="status-panel">
+            <p>Estado: <span id="connection-status">Desconectado</span></p>
+            <p>Espectadores: <span id="viewer-count">-</span></p>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="admin.js"></script>
+</body>
+
+</html>
